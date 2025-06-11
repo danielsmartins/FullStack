@@ -4,17 +4,20 @@ sequenceDiagram
     participant Navegador
     participant Servidor
 
+    Usuário->>Navegador: Acessa /exampleapp/spa
+    Navegador->>Servidor: GET /exampleapp/spa (HTML)
+    Servidor-->>Navegador: HTML com div#notes e formulário
+
+    Navegador->>Servidor: GET /exampleapp/main.css
+    Servidor-->>Navegador: CSS
+
+    Navegador->>Servidor: GET /exampleapp/spa.js
+    Servidor-->>Navegador: Código JavaScript da SPA
+
+    Note right of Navegador: JS é executado após o carregamento
+
     Navegador->>Servidor: GET /exampleapp/data.json
-    Servidor-->>Navegador: JSON com as notas existentes
-    Note right of Navegador: JS renderiza as notas com redrawNotes()
+    Servidor-->>Navegador: JSON com todas as notas
 
-    Usuário->>Navegador: Digita nota e clica em "Save"
-    Note right of Navegador: JS intercepta envio (form.onsubmit)
-
-    Navegador->>Navegador: Adiciona nova nota ao array `notes` e redesenha (redrawNotes)
-
-    Navegador->>Servidor: POST /exampleapp/new_note_spa (nota em JSON)
-    Servidor-->>Navegador: HTTP 201 Created
-
-    Note right of Navegador: Nota já foi renderizada antes da resposta
+    Note right of Navegador: JS processa os dados e renderiza<br>as notas com redrawNotes()
 ```
