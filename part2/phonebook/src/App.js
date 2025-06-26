@@ -75,14 +75,23 @@ const App = () => {
             setNoti({ message: `Updated ${returnedPerson.name}`, type: 'success' });
             clearNotification();
           })
-          .catch(error => {
+           .catch(error => {
+
+          // Verifica se é um erro de validação (400) ou outro erro
+          if (error.response && error.response.data.error) {
+            // Mostra a mensagem de erro vinda do servidor 
+            setNoti({ message: error.response.data.error, type: 'error' });
+          } else {
+            // Caso genérico, como o de a pessoa já ter sido removida (404)
             setNoti({
               message: `Information of ${existingPerson.name} has already been removed from server`,
               type: 'error',
             });
-            clearNotification();
+            // Só remove a pessoa da lista neste caso
             setPersons(persons.filter(p => p.id !== existingPerson.id));
-          });
+          }
+          clearNotification();
+        });
       }
     } else {
       const newPerson = { name: newName, number: newNumber };
@@ -115,7 +124,7 @@ const App = () => {
 
       <Filter value={filter} onChange={handleFilterChange} />
 
-      <h3>Add a new</h3>
+      <h3>Add a new phone number</h3>
       <PersonForm
         onSubmit={handleSubmit}
         newName={newName}
