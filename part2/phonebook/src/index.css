@@ -1,5 +1,31 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: #ffffff;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+/* Títulos */
+h2, h3 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Notificações */
+/* Estilo para a notificação de sucesso */
 .success {
-  color: green;
+  color: green; /* Cor do texto */
   background: lightgrey;
   font-size: 20px;
   border-style: solid;
@@ -8,12 +34,67 @@
   margin-bottom: 10px;
 }
 
+/* Estilo para a notificação de erro */
 .error {
-  color: red;
-  background: lightgrey;
+  color: white; 
+  background: lightcoral; 
   font-size: 20px;
   border-style: solid;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+}
+
+/* Formulários */
+input {
+  padding: 10px;
+  margin: 5px 0 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 16px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #115293;
+}
+
+/* Lista de pessoas */
+.person-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.person-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.person-number {
+  color: #555;
+  margin-left: 10px;
+}
+
+.delete-button {
+  background-color: #e53935;
+  margin-left: 10px;
+}
+
+.delete-button:hover {
+  background-color: #ab000d;
 }
